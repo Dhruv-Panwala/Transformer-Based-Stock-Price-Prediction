@@ -1,0 +1,9 @@
+-r requirements.txt    # include backend dependencies first
+
+# Training extras
+jupyter>=1.0.0
+matplotlib>=3.8.2
+seaborn>=0.13.0
+scipy>=1.11.4
+notebook>=7.0.6
+tqdm>=4.66.1

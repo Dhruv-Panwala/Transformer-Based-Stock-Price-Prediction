@@ -1,0 +1,312 @@
+.stock-search-form {
+  position: relative;
+}
+
+.form-header {
+  margin-bottom: var(--space-8);
+}
+
+.form-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.form-title::before {
+  content: '🔍';
+  font-size: 1.5rem;
+}
+
+.form-subtitle {
+  color: var(--gray-600);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.search-form {
+  margin-bottom: var(--space-8);
+}
+
+.input-group {
+  display: flex;
+  gap: var(--space-4);
+  flex-direction: column;
+  position: relative;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.input-icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  font-size: 1.25rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input {
+  padding-left: var(--space-12);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.search-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 0 4px rgba(59, 130, 246, 0.1),
+    0 10px 25px -5px rgba(59, 130, 246, 0.2);
+  color: blueviolet;
+  font-weight: bold;
+}
+
+.search-btn {
+  min-width: 140px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: var(--space-4) var(--space-8);
+  position: relative;
+  overflow: hidden;
+}
+
+.current-stock {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+  border: 2px solid var(--primary-200);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.current-stock::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.current-label {
+  font-weight: 600;
+  color: var(--primary-700);
+  font-size: 0.9375rem;
+}
+
+.current-symbol {
+  font-weight: 800;
+  color: var(--primary-600);
+  font-size: 1.375rem;
+  font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.popular-stocks {
+  border-top: 2px solid var(--gray-100);
+  padding-top: var(--space-8);
+  position: relative;
+}
+
+.popular-stocks::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-500), var(--success-500));
+  border-radius: 1px;
+}
+
+.popular-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.popular-title::before {
+  content: '⭐';
+  font-size: 1.125rem;
+}
+
+.popular-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: var(--space-3);
+}
+
+.btn-stock {
+  padding: var(--space-4) var(--space-3);
+  border: 2px solid var(--gray-200);
+  background: white;
+  color: var(--gray-700);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.btn-stock::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--transition-normal);
+}
+
+.btn-stock:hover {
+  border-color: var(--primary-400);
+  color: var(--primary-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(59, 130, 246, 0.3);
+}
+
+.btn-stock:hover::before {
+  left: 100%;
+}
+
+.btn-stock.active {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  border-color: var(--primary-600);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -8px rgba(59, 130, 246, 0.4);
+}
+
+.btn-stock:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-stock:disabled::before {
+  display: none;
+}
+
+/* Enhanced responsive design */
+@media (min-width: 640px) {
+  .input-group {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .search-btn {
+    flex-shrink: 0;
+    min-width: 160px;
+  }
+
+  .popular-buttons {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-4);
+  }
+  
+  .form-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .popular-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-title {
+    font-size: 2.25rem;
+  }
+  
+  .popular-buttons {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 639px) {
+  .form-title {
+    font-size: 1.5rem;
+  }
+  
+  .search-input {
+    font-size: 1rem;
+    padding-left: var(--space-10);
+  }
+  
+  .input-icon {
+    font-size: 1.125rem;
+    left: var(--space-3);
+  }
+  
+  .search-btn {
+    min-width: 120px;
+    font-size: 0.9375rem;
+    padding: var(--space-3) var(--space-6);
+  }
+  
+  .current-symbol {
+    font-size: 1.25rem;
+  }
+  
+  .popular-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .btn-stock {
+    padding: var(--space-3) var(--space-2);
+    font-size: 0.8125rem;
+  }
+}
+
+/* Animation enhancements */
+.stock-search-form {
+  animation: slideUp 0.6s ease-out;
+}
+
+.popular-buttons .btn-stock {
+  animation: scaleIn 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.popular-buttons .btn-stock:nth-child(1) { animation-delay: 0.1s; }
+.popular-buttons .btn-stock:nth-child(2) { animation-delay: 0.15s; }
+.popular-buttons .btn-stock:nth-child(3) { animation-delay: 0.2s; }
+.popular-buttons .btn-stock:nth-child(4) { animation-delay: 0.25s; }
+.popular-buttons .btn-stock:nth-child(5) { animation-delay: 0.3s; }
+.popular-buttons .btn-stock:nth-child(6) { animation-delay: 0.35s; }
